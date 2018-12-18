@@ -2,7 +2,8 @@ const porta = 3003
 
 const express = require('express')
 const app     = express()
-
+const bodyParser = require('body-parser')
+const bancoDeDados = require('./bancoDeDados')
 /*
 app.get('/produtos',(req,res,next) =>{
     console.log('Middleware1.....')
@@ -16,9 +17,21 @@ app.use((req,res,next) =>{
 })
 */
 
-
 app.get('/produtos',(req,res,next) =>{
-    res.send({nome:'Notbookkkk',preco:123.34})    // vai converter automaticamente para json
+    //res.send({nome:'Notbookkkk',preco:123.34})    // vai converter automaticamente para json
+    res.send(bancoDeDados.getProdutos())
+})
+
+app.get('/produtos/:id',(req,res,next) =>{
+    res.send(bancoDeDados.getProduto(req.params.id))
+})
+
+app.post('/produtos',(req,res,next) =>{
+    const produto = bancoDeDados.salvarProduto({
+        nome: req.params.nome,
+        preco: req.params.preco
+    })
+    res.send(produto)
 })
 
 app.listen(porta,() =>{
