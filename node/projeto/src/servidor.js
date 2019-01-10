@@ -17,8 +17,10 @@ app.use((req,res,next) =>{
 })
 */
 
+app.use(bodyParser.urlencoded({extended: true } ))
 app.get('/produtos',(req,res,next) =>{
     //res.send({nome:'Notbookkkk',preco:123.34})    // vai converter automaticamente para json
+    //res.send({name:'fabio',id:1})
     res.send(bancoDeDados.getProdutos())
 })
 
@@ -27,10 +29,26 @@ app.get('/produtos/:id',(req,res,next) =>{
 })
 
 app.post('/produtos',(req,res,next) =>{
+    console.log('passou 1')
     const produto = bancoDeDados.salvarProduto({
-        nome: req.params.nome,
-        preco: req.params.preco
+        nome: req.body.nome,
+        preco: req.body.preco
     })
+    console.log('produto:',produto)
+    res.send(produto)
+})
+
+app.put('/produtos/:id',(req,res,next) =>{    
+    const produto = bancoDeDados.salvarProduto({
+        id:req.params.id,
+        nome: req.body.nome,
+        preco: req.body.preco
+    })    
+    res.send(produto)
+})
+
+app.delete('/produtos/:id',(req,res,next) =>{    
+    const produto = bancoDeDados.excluirProduto(req.params.id)    
     res.send(produto)
 })
 
