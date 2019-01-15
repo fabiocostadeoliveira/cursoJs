@@ -10,3 +10,15 @@ console.log(a)
 
 const produto = 'Ipad'
 console.log(`${produto} é caro !!`)
+
+//Destruturing
+const [l,e,...tras] = 'Cod3r'
+console.log(l,e,tras)
+
+const [x, ,y] = [1,2,3]
+console.log(x,y)
+
+const {nome, idade:i} = {nome:'ana', idade:18}
+console.log(nome,i)
+
+
