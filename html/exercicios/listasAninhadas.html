@@ -1,0 +1,59 @@
+<style>
+        label input[type="checkbox"] {
+            display: none;
+        }
+    
+        label h4 {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    
+        .collapse {
+            height: 0px;
+            overflow: hidden;
+            transition: height 0.8s;
+        }
+    
+        input:checked + .collapse {
+            height: 200px;
+        }
+    
+    </style>
+    
+
+<h1>Projetoa</h1>
+<ul class="tree">
+    <li>
+        Backend
+        <ul>
+            <li>
+                <label>
+                    <h4>App</h4>
+                    <input type="checkbox">
+                    <ul class="collapse">
+                        <li>produto.js</li>
+                        <li>usuario.js</li>
+                        <li>venda.js</li>
+                    </ul>
+                </label>
+            </li>
+            <li>
+                config
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        frontend
+        <ul>
+            <li>app.css</li>
+            <li>app.js</li>
+            <li>index.html</li>
+        </ul>
+    </li>
+</ul>
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
